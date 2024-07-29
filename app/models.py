@@ -98,12 +98,21 @@ def add_default_user():
     conn.commit()
     conn.close()
 
+def clean_author_names():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("UPDATE books SET authors = REPLACE(authors, 'By ', '') WHERE authors LIKE 'By %'")
+    conn.commit()
+    cur.close()
+    conn.close()
+
 def init_db():
     create_table_books()
     create_table_users()
     create_table_orders()
     create_table_order_items()
     import_csv_data()
+    clean_author_names()
     add_default_user()
 
 if __name__ == '__main__':
