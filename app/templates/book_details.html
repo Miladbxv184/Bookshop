@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Book Details{% endblock %}
+{% block content %}
+<div class="details card">
+    <div class="card-body">
+        <h1 class="card-title">{{ book['title'] }}</h1>
+        <h2 class="card-subtitle mb-2 text-muted">By {{ book['authors'] }}</h2>
+        <p class="card-text"><strong>Description:</strong> {{ book['description'] }}</p>
+        <p class="card-text"><strong>Category:</strong> {{ book['category'] }}</p>
+        <p class="card-text"><strong>Publisher:</strong> {{ book['publisher'] }}</p>
+        <p class="card-text"><strong>Price:</strong> ${{ book['price'] }}</p>
+        <p class="card-text"><strong>Publish Date:</strong> {{ book['publish_month'] }} {{ book['publish_year'] }}</p>
+        <form action="{{ url_for('add_to_cart', book_id=book['id']) }}" method="POST">
+            <button type="submit" class="btn btn-primary">Add to Cart</button>
+        </form>
+    </div>
+    <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-secondary mt-2">&larr; Back</a>
+</div>
+{% endblock %}

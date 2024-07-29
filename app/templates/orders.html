@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Your Orders{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="my-4 text-center">Your Orders</h1>
+    {% for order in orders %}
+    <div class="order card mb-3">
+        <div class="card-body">
+            <h2 class="card-title">Order {{ loop.index }}</h2>
+            <p><strong>Username:</strong> {{ order['username'] }}</p>
+            <p><strong>Date:</strong> {{ order['order_date'] }}</p>
+            <p><strong>Total Price:</strong> ${{ order['total_price'] }}</p>
+            <div class="book-list">
+                <strong>Books:</strong>
+                <ul class="list-group">
+                    {% for book in order['books'] %}
+                    <li class="list-group-item">{{ book['title'] }} - ${{ book['price'] }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <form action="{{ url_for('delete_all_orders') }}" method="POST">
+        <button type="submit" class="btn btn-danger btn-block">Clear Order History</button>
+    </form>
+    <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-secondary mt-3">&larr; Back</a>
+</div>
+{% endblock %}
