@@ -36,17 +36,15 @@ You can also register your own user.
 
 ## Description of fulfillment of requirements
 ### SQL queries
-#### CREATE
-We create tables in `schema.sql`.
+The `routes.py` file includes several examples of interacting with the database using SQL:
 
 #### INSERT
-We use `INSERT` statements in multiple places. For example:
+Inserting user data during registration:
 
-- Inserting user data during registration:
   ```python
-  sql = text("INSERT INTO \"user\" (username, email, password_hash) VALUES (:username, :email, :password_hash)")
-  db.session.execute(sql, {'username': user.username, 'email': user.email, 'password_hash': user.password_hash})
-  db.session.commit()
+  conn.execute('INSERT INTO USERS (username, password) VALUES (?, ?)', (username, password))
+  conn.execute('INSERT INTO orders (order_date, total_price, username) VALUES (?, ?, ?)', (order_date, total_price, username))
+
 
 - Inserting book data when a user adds a book:
   ```python
