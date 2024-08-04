@@ -2,7 +2,7 @@
 
 ##### by Milad Maidan bxv184.
 
-## ER-diagram
+## E/R-diagram
 ![bookshop.png](/bookshop.png)
 
 ## Technical setup
@@ -27,7 +27,7 @@ Initialize the database by running the `import_csv.py` script, which will create
     python run.py
 
 ### How to use
-We have generated an example user.
+I have generated an example user.
 
     username: username
     password: password
