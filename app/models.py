@@ -1,7 +1,7 @@
 import sqlite3
 
 def get_db_connection():
-    conn = sqlite3.connect('books.db')
+    conn = sqlite3.connect('booksclean.db')
     return conn
 
 def create_table_books():
