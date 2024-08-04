@@ -6,7 +6,7 @@ import re
 from datetime import datetime
 
 def get_db_connection():
-    conn = sqlite3.connect('books.db')
+    conn = sqlite3.connect('booksclean.db')
     conn.row_factory = sqlite3.Row
     return conn
 
